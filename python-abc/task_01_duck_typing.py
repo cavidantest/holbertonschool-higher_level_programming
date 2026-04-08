@@ -1,58 +1,64 @@
 #!/usr/bin/env python3
-"""Module for abstract shapes and duck typing."""
-
+"""
+This module demonstrates Abstract Base Classes and Duck Typing in Python.
+"""
+import math
 from abc import ABC, abstractmethod
-from math import pi
 
 
 class Shape(ABC):
-    """Abstract base class for shapes."""
+    """
+    Abstract Base Class for geometric shapes.
+    """
 
     @abstractmethod
     def area(self):
-        """Return the area of the shape."""
+        """Calculates the area of the shape."""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Return the perimeter of the shape."""
+        """Calculates the perimeter of the shape."""
         pass
 
 
 class Circle(Shape):
-    """Circle shape."""
+    """
+    Concrete implementation of a Circle.
+    """
 
     def __init__(self, radius):
-        """Initialize a circle."""
         self.radius = radius
 
     def area(self):
-        """Return the area of the circle."""
-        return pi * self.radius ** 2
+        return math.pi * (self.radius ** 2)
 
     def perimeter(self):
-        """Return the perimeter of the circle."""
-        return 2 * pi * self.radius
+        return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
-    """Rectangle shape."""
+    """
+    Concrete implementation of a Rectangle.
+    """
 
     def __init__(self, width, height):
-        """Initialize a rectangle."""
         self.width = width
         self.height = height
 
     def area(self):
-        """Return the area of the rectangle."""
         return self.width * self.height
 
     def perimeter(self):
-        """Return the perimeter of the rectangle."""
         return 2 * (self.width + self.height)
 
 
 def shape_info(shape):
-    """Print the area and perimeter of a shape."""
-    print("Area: {}".format(shape.area()))
-    print("Perimeter: {}".format(shape.perimeter()))
+    """
+    Prints the area and perimeter of a shape using duck typing.
+    
+    This function does not check if 'shape' inherits from Shape.
+    It simply assumes the object provides area() and perimeter() methods.
+    """
+    print(f"Area: {shape.area()}")
+    print(f"Perimeter: {shape.perimeter()}")
