@@ -43,3 +43,34 @@ ValueError distance must be greater than 0
 ... except Exception as e:
 ...     print(type(e).__name__, e)
 Exception area() is not implemented
+# Missing required edge cases
+
+>>> try:
+...     bg.integer_validator("age")
+... except Exception as e:
+...     print(type(e).__name__)
+TypeError
+
+>>> try:
+...     bg.integer_validator("age", (4,))
+... except Exception as e:
+...     print(type(e).__name__, e)
+TypeError age must be an integer
+
+>>> try:
+...     bg.integer_validator("age", [3])
+... except Exception as e:
+...     print(type(e).__name__, e)
+TypeError age must be an integer
+
+>>> try:
+...     bg.integer_validator("age", True)
+... except Exception as e:
+...     print(type(e).__name__, e)
+TypeError age must be an integer
+
+>>> try:
+...     bg.integer_validator("age", {3, 4})
+... except Exception as e:
+...     print(type(e).__name__, e)
+TypeError age must be an integer
