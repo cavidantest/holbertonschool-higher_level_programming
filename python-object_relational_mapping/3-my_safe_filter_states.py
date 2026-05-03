@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all states matching the argument from the database (safe from injection)"""
+"""Lists all states matching the argument from the database"""
 import MySQLdb
 import sys
 
